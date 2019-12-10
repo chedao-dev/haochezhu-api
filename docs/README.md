@@ -103,20 +103,21 @@
 	既得到相应的签名。
 
 **示例**
-
+	
 	appId=appidtest
-        key=APPTEST16KEY0123
+	key=APPTEST16KEY0123
         data=GNFxiXyBOqsxX5cch2WymSPKZcv3gbPDXm5DQJh5BSw-_iuwRGJb3_Q086yjlqre
         rd=42511
+	
         按ASCII码升序排序后的结果为：
-            appId=appidtest                      
-            data=Qu85EZ_WZDAEn092ldwEsv4gJJuiRllCt7xWLqephtQ-fPwchcobMe7gt5iN3qTW
-            key=APPTEST16KEY0123
-            rd=42511
+        	appId=appidtest                      
+            	data=Qu85EZ_WZDAEn092ldwEsv4gJJuiRllCt7xWLqephtQ-fPwchcobMe7gt5iN3qTW
+            	key=APPTEST16KEY0123
+            	rd=42511
         QueryString为：
-                appId=appidtest&data=GNFxiXyBOqsxX5cch2WymSPKZcv3gbPDXm5DQJh5BSw-_iuwRGJb3_Q086yjlqre&rd=42511&key=APPTEST16KEY0123          
+        	appId=appidtest&data=GNFxiXyBOqsxX5cch2WymSPKZcv3gbPDXm5DQJh5BSw-_iuwRGJb3_Q086yjlqre&rd=42511&key=APPTEST16KEY0123          
         对上述字符串的签名为：
-                 3c9efc84a95a95f278b23a3fc2f99dd5
+        	3c9efc84a95a95f278b23a3fc2f99dd5
 
 
 ## 业务接口data字段定义
