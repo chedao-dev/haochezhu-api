@@ -50,9 +50,9 @@
 
 **加密流程**
 
-      密文=bytesToBase64String(                     //字节数组转成BASE64字符串(需url safe)
-                ASE.encrypt(                                //AES解密
-                       stringToBytes(原文,"utf-8”),  //把明文字符串转成字节数组，编码utf-8
+      密文=bytesToBase64String(                        //字节数组转成BASE64字符串(需url safe)
+                ASE.encrypt(                          //AES解密
+                       stringToBytes(原文,"utf-8”),    //把明文字符串转成字节数组，编码utf-8
                        KEY,
                        IV
                 )
@@ -60,9 +60,9 @@
 
 **解密流程**
 
-	  原文=bytesToString(                                      //字节数组转成字符串，编码utf-8
-              AES.decrypt(                                    //AES加密   
-                     base64StringToBytes(密文),     //把密文转成字节数组
+	  原文=bytesToString(                          //字节数组转成字符串，编码utf-8
+              AES.decrypt(                            //AES加密   
+                     base64StringToBytes(密文),        //把密文转成字节数组
                      KEY,
                      IV
               ),
@@ -104,18 +104,18 @@
 
 **示例**
 
-	      		appId=appidtest
-                key=APPTEST16KEY0123
-                data=GNFxiXyBOqsxX5cch2WymSPKZcv3gbPDXm5DQJh5BSw-_iuwRGJb3_Q086yjlqre
-                rd=42511
+	appId=appidtest
+        key=APPTEST16KEY0123
+        data=GNFxiXyBOqsxX5cch2WymSPKZcv3gbPDXm5DQJh5BSw-_iuwRGJb3_Q086yjlqre
+        rd=42511
         按ASCII码升序排序后的结果为：
-                appId=appidtest                      
-                data=Qu85EZ_WZDAEn092ldwEsv4gJJuiRllCt7xWLqephtQ-fPwchcobMe7gt5iN3qTW
-                key=APPTEST16KEY0123
-                rd=42511
+            appId=appidtest                      
+            data=Qu85EZ_WZDAEn092ldwEsv4gJJuiRllCt7xWLqephtQ-fPwchcobMe7gt5iN3qTW
+            key=APPTEST16KEY0123
+            rd=42511
         QueryString为：
                 appId=appidtest&data=GNFxiXyBOqsxX5cch2WymSPKZcv3gbPDXm5DQJh5BSw-_iuwRGJb3_Q086yjlqre&rd=42511&key=APPTEST16KEY0123          
-      对上述字符串的签名为：
+        对上述字符串的签名为：
                  3c9efc84a95a95f278b23a3fc2f99dd5
 
 
