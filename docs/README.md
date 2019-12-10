@@ -106,8 +106,8 @@
 	
 	appId=appidtest
 	key=APPTEST16KEY0123
-        data=GNFxiXyBOqsxX5cch2WymSPKZcv3gbPDXm5DQJh5BSw-_iuwRGJb3_Q086yjlqre
-        rd=42511
+	data=GNFxiXyBOqsxX5cch2WymSPKZcv3gbPDXm5DQJh5BSw-_iuwRGJb3_Q086yjlqre
+	rd=42511
 	
         按ASCII码升序排序后的结果为：
         	appId=appidtest                      
