@@ -50,9 +50,9 @@
 
 **加密流程**
 
-      密文=bytesToBase64String(                        //字节数组转成BASE64字符串(需url safe)
-                ASE.encrypt(                          //AES解密
-                       stringToBytes(原文,"utf-8”),    //把明文字符串转成字节数组，编码utf-8
+      密文=bytesToBase64String(                     //字节数组转成BASE64字符串(需url safe)
+                ASE.encrypt(                                //AES解密
+                       stringToBytes(原文,"utf-8”),  //把明文字符串转成字节数组，编码utf-8
                        KEY,
                        IV
                 )
@@ -60,9 +60,9 @@
 
 **解密流程**
 
-	  原文=bytesToString(                          //字节数组转成字符串，编码utf-8
-              AES.decrypt(                            //AES加密   
-                     base64StringToBytes(密文),        //把密文转成字节数组
+	  原文=bytesToString(                                      //字节数组转成字符串，编码utf-8
+              AES.decrypt(                                    //AES加密   
+                     base64StringToBytes(密文),     //把密文转成字节数组
                      KEY,
                      IV
               ),
@@ -103,21 +103,20 @@
 	既得到相应的签名。
 
 **示例**
-	
-	appId=appidtest
-	key=APPTEST16KEY0123
-	data=GNFxiXyBOqsxX5cch2WymSPKZcv3gbPDXm5DQJh5BSw-_iuwRGJb3_Q086yjlqre
-	rd=42511
-	
+
+	      		appId=appidtest
+                key=APPTEST16KEY0123
+                data=GNFxiXyBOqsxX5cch2WymSPKZcv3gbPDXm5DQJh5BSw-_iuwRGJb3_Q086yjlqre
+                rd=42511
         按ASCII码升序排序后的结果为：
-        	appId=appidtest                      
-            	data=Qu85EZ_WZDAEn092ldwEsv4gJJuiRllCt7xWLqephtQ-fPwchcobMe7gt5iN3qTW
-            	key=APPTEST16KEY0123
-            	rd=42511
+                appId=appidtest                      
+                data=Qu85EZ_WZDAEn092ldwEsv4gJJuiRllCt7xWLqephtQ-fPwchcobMe7gt5iN3qTW
+                key=APPTEST16KEY0123
+                rd=42511
         QueryString为：
-        	appId=appidtest&data=GNFxiXyBOqsxX5cch2WymSPKZcv3gbPDXm5DQJh5BSw-_iuwRGJb3_Q086yjlqre&rd=42511&key=APPTEST16KEY0123          
-        对上述字符串的签名为：
-        	3c9efc84a95a95f278b23a3fc2f99dd5
+                appId=appidtest&data=GNFxiXyBOqsxX5cch2WymSPKZcv3gbPDXm5DQJh5BSw-_iuwRGJb3_Q086yjlqre&rd=42511&key=APPTEST16KEY0123          
+      对上述字符串的签名为：
+                 3c9efc84a95a95f278b23a3fc2f99dd5
 
 
 ## 业务接口data字段定义
@@ -136,6 +135,7 @@
 | ---------- | --------  | ---------- | ----------------------------------------------------------------- |
 | templateId | true      | String     | 优惠券规则ID                             						  |
 | mobile     | true      | String 	  | 发送优惠券用户手机号                		 						  |
+| sourceTag  | true      | String     | 用户渠道来源                                         |
 
 
 **响应参数**
@@ -145,3 +145,58 @@
 
 ---
 
+### 指定分页查询用户优惠券信息接口
+
+> 指定用户发送指定优惠券
+
+**接口调用请求说明**
+
+- Path: `/api/member/coupon/query`
+- Method: `POST`
+- Query String Parameters:
+
+| 参数名      | 是否必须  | 参数类型    | 参数说明                                               |
+| ---------- | --------  | ---------- | ----------------------------------------------------------------- |
+| templateId | true      | String     | 优惠券规则ID                                           |
+| mobile     | true      | String     | 手机号                                               |
+| sourceTag  | true      | String     | 用户渠道来源                                         |
+| state      | true      | Integer    | 优惠券状态 1 未使用 2 已使用  3 已过期                 |
+| pageNo     | false     | Integer    | 当前查询页码  默认 1                                  |
+| pageSize   | false     | Integer    | 当前页查询数量  默认 10                                |
+
+**响应参数**
+
+| 参数名      | 参数类型    | 参数说明                                               |
+| ---------- | ---------- | ----------------------------------------------------------------- |
+| resultList | String     | 返回数据结果集                                        |
+| couponId   | String     | 优惠券ID                                  |
+| activityName| String     | 优惠券活动名称                                  |
+| templateId  | String     | 优惠券规则ID                                    |
+| deductAmount| Integer    | 抵扣金额                                  |
+| deductType  | Integer    | 优惠券类型 1 定额券 2 折扣券                     |
+| currentPage | Integer    | 当前页码                                       |
+| pageSize    | Integer    | 当前页展示数量                                  |
+| totalCount  | Integer    | 总条数                                         |
+| totalPage   | Integer    | 总页数                                         |
+
+
+**结果样例**
+```json
+{
+  "resultList": [
+    {
+      "couponId": "369c7cc81bcb11eabbd900163e100c28",
+      "activityName": "测试发券活动",
+      "templateId": "206b05771bc811eabbd900163e100c28",
+      "deductAmount": 1100,
+      "deductType": 1
+    }
+  ],
+  "currentPage": 1,
+  "pageSize": 10,
+  "totalCount": 1,
+  "totalPage": 1
+}
+```
+
+---
